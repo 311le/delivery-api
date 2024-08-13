@@ -45,7 +45,7 @@ public class OrderService {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found with id " + id));
         orderRepository.deleteById(id);
-        messagingTemplate.convertAndSend("/topic/orders", order);  // Enviar mensaje a través de WebSocket
+        messagingTemplate.convertAndSend("/topic/orders", order);  // Enviar mensaje a través de WebSocket.
         return order;
     }
 }
